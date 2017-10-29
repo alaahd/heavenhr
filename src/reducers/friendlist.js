@@ -1,6 +1,8 @@
 import * as types from '../constants/ActionTypes';
 
 const initialState = {
+  pageSize: 2,
+  pageOffset: 0,
   friendsById: [
     {
       name: 'Theodore Roosevelt',
@@ -19,9 +21,23 @@ const initialState = {
 
 export default function friends(state = initialState, action) {
   switch (action.type) {
+      case types.SET_PAGE_OFFSET:
+      console.log('calling set page offset', action.offset);
+      // return {
+      //     ...state,
+      //     {pageOffset: action.offset}
+      // };
+      //return Object.assign({}, state, {pageOffset: action.offset});
+      return {
+          ...state,
+          pageOffset: action.offset
+      }
     case types.ADD_FRIEND:
+      console.log('offset', state['friendsById'].length % state.pageSize);
+
       return {
         ...state,
+        pageOffset: state['friendsById'].length % state.pageSize === 0 ? state['friendsById'].length : state.pageOffset,
         friendsById: [
           ...state.friendsById,
           {

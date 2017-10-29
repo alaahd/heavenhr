@@ -20,3 +20,10 @@ export function starFriend(id) {
     id
   };
 }
+
+export function setPageOffset(offset) {
+  return {
+    type: types.SET_PAGE_OFFSET,
+    offset
+  }
+}
