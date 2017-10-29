@@ -5,8 +5,7 @@ import styles from './Pager.css';
 export default class Pager extends Component {
     setPage(offset, e) {
         e.preventDefault();
-        // console.log('active event', e);
-        // console.log('active offset', offset);
+        //dispatch the setPageOffset event
         this.props.actions.setPageOffset(offset);
     }
 
