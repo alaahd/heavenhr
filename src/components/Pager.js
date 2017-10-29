@@ -1,5 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
+import styles from './Pager.css';
 
 export default class Pager extends Component {
     setPage(offset, e) {
@@ -21,16 +22,16 @@ export default class Pager extends Component {
         }
 
         return (
-            <ul>
+            <ul className={styles.pager}>
                 {pages.map((p)=>{
 
                     if (p.offset === offset) {
-                        return <li key={p.offset}>Page {p.name}</li>
+                        return <li className="active" key={p.offset}>{p.name}</li>
                     }
 
                     return (
                         <li key={p.offset}>
-                            <a href="#" onClick={this.setPage.bind(this, p.offset)}>Page {p.name}</a>
+                            <a href="#" onClick={this.setPage.bind(this, p.offset)}>{p.name}</a>
                         </li>
                     )
                 })}

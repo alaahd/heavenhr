@@ -1,0 +1,25 @@
+:local(.pager) {
+  list-style: none;
+  display: flex;
+  color: #FFF;
+  margin: 0;
+  padding: 1.25rem;
+  flex-wrap: wrap;
+}
+
+:local(.pager > li) {
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  margin: .5rem;
+}
+
+:local(.pager > li > a) {
+  display: block;
+  padding: .5rem 1rem;
+  background: #FFF;
+  color: #5C75B0;
+}
+
+:local(.pager > li).active {
+  padding: .5rem 1rem;
+}
