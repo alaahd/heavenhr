@@ -35,11 +35,11 @@ export default function friends(state = initialState, action) {
       case types.ADD_FRIEND:
       return {
         ...state,
-        pageOffset: state.friendsById.length % state.pageSize === 0 ? [...state.friendsById].length : {...state}.pageOffset,
+        pageOffset: [...state.friendsById].length - ([...state.friendsById].length % {...state}.pageSize),
         friendsById: [
           ...state.friendsById,
           {
-            index: state.friendsById.slice(-1).pop().index + 1,
+            index: state.friendsById.length ? state.friendsById.slice(-1).pop().index + 1 : 0,
             name: action.name,
             gender: action.gender,
             starred: false
@@ -50,7 +50,7 @@ export default function friends(state = initialState, action) {
       return {
         ...state,
         friendsById: state.friendsById.filter((item, index) => item.index !== action.id),
-        pageOffset: (state.friendsById.length - 1 ) % state.pageSize === 0 ? ([...state.friendsById].length - 1) - {...state}.pageSize : {...state}.pageOffset
+        pageOffset: (state.friendsById.length - 1 ) % state.pageSize === 0 && state.friendsById.length > state.pageSize ? ([...state.friendsById].length - 1) - {...state}.pageSize : {...state}.pageOffset
       };
     case types.STAR_FRIEND:
 
