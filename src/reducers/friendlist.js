@@ -32,12 +32,10 @@ export default function friends(state = initialState, action) {
           ...state,
           pageOffset: action.offset
       };
-    case types.ADD_FRIEND:
-      console.log('offset', state['friendsById'].length % state.pageSize);
-
+      case types.ADD_FRIEND:
       return {
         ...state,
-        pageOffset: [...state.friendsById].length % state.pageSize === 0 ? [...state.friendsById].length : state.pageOffset,
+        pageOffset: state.friendsById.length % state.pageSize === 0 ? [...state.friendsById].length : {...state}.pageOffset,
         friendsById: [
           ...state.friendsById,
           {
@@ -48,10 +46,11 @@ export default function friends(state = initialState, action) {
           }
         ],
       };
-    case types.DELETE_FRIEND:
+      case types.DELETE_FRIEND:
       return {
         ...state,
-        friendsById: state.friendsById.filter((item, index) => item.index !== action.id)
+        friendsById: state.friendsById.filter((item, index) => item.index !== action.id),
+        pageOffset: (state.friendsById.length - 1 ) % state.pageSize === 0 ? ([...state.friendsById].length - 1) - {...state}.pageSize : {...state}.pageOffset
       };
     case types.STAR_FRIEND:
 
