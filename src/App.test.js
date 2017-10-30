@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as reducers from './reducers/index';
+import deepFreeze from 'deep-freeze';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -43,6 +44,9 @@ it('expect reducer to add a friend to array', () => {
     }
 
   const action = {type:'ADD_FRIEND', name:'Alaa Haddad', gender: 'male'};
+
+  //freeze the object to verify the reducer is not mutating the state object
+  deepFreeze(stateBefore);
 
   expect(reducers.friendlist(stateBefore, action)).toEqual(stateAfter);
 })
