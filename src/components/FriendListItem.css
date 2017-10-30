@@ -23,6 +23,11 @@
   color: #5C75B0;
 }
 
+:local(.gender) {
+  text-transform: capitalize;
+  font-size: small;
+}
+
 button:focus {
   outline: 0 !important;
 }

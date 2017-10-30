@@ -12,6 +12,9 @@ class FriendListItem extends Component {
           <div>
             <small>xx friends in common</small>
           </div>
+          <div>
+              gender: <span className={styles.gender}>{this.props.gender}</span>
+          </div>
         </div>
         <div className={styles.friendActions}>
           <button className={`btn btn-default ${styles.btnAction}`}

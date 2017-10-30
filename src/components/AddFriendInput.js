@@ -6,14 +6,22 @@ class AddFriendInput extends Component {
 
   render () {
     return (
-      <input
-        type="text"
-        autoFocus="true"
-        className={classnames('form-control', styles.addFriendInput)}
-        placeholder="Type the name of a friend"
-        value={this.state.name}
-        onChange={this.handleChange.bind(this)}
-        onKeyDown={this.handleSubmit.bind(this)} />
+        <div>
+            <div className={styles.addFriendGender}><span>Select gender: </span>
+            <select ref="gender" id="gender" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            </div>
+          <input
+            type="text"
+            autoFocus="true"
+            className={classnames('form-control', styles.addFriendInput)}
+            placeholder="Type the name of a friend"
+            value={this.state.name}
+            onChange={this.handleChange.bind(this)}
+            onKeyDown={this.handleSubmit.bind(this)} />
+        </div>
     );
   }
 
@@ -30,8 +38,9 @@ class AddFriendInput extends Component {
 
   handleSubmit (e) {
     const name = e.target.value.trim();
+    const gender = this.refs.gender.value;
     if (e.which === 13) {
-      this.props.addFriend(name);
+      this.props.addFriend(name, gender);
       this.setState({ name: '' });
     }
   }

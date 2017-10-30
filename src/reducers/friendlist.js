@@ -7,17 +7,20 @@ const initialState = {
     {
       index: 0,
       name: 'Theodore Roosevelt',
-      starred: true
+      starred: true,
+      gender: 'male'
     },
     {
       index: 1,
       name: 'Abraham Lincoln',
-      starred: false
+      starred: false,
+      gender: 'female'
     },
     {
       index: 2,
       name: 'George Washington',
-      starred: false
+      starred: false,
+      gender: 'male'
     }
   ]
 };
@@ -34,12 +37,13 @@ export default function friends(state = initialState, action) {
 
       return {
         ...state,
-        pageOffset: [...state.friendsById].length % state.pageSize === 0 ? state['friendsById'].length : state.pageOffset,
+        pageOffset: [...state.friendsById].length % state.pageSize === 0 ? [...state.friendsById].length : state.pageOffset,
         friendsById: [
           ...state.friendsById,
           {
             index: state.friendsById.slice(-1).pop().index + 1,
             name: action.name,
+            gender: action.gender,
             starred: false
           }
         ],
