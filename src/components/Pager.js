@@ -1,8 +1,9 @@
 import React from 'react';
 import {Component} from 'react';
+import PropTypes from 'prop-types'
 import styles from './Pager.css';
 
-export default class Pager extends Component {
+class Pager extends Component {
     setPage(offset, e) {
         e.preventDefault();
         //dispatch the setPageOffset event
@@ -38,3 +39,10 @@ export default class Pager extends Component {
         )
     }
 }
+
+Pager.propTypes = {
+    pconfig: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+}
+
+export default Pager

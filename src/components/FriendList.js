@@ -25,7 +25,7 @@ class FriendList extends Component {
             })
           }
         </ul>
-        <Pager {...this.props} />
+          {this.props.friends.length > this.props.pconfig.size && <Pager {...this.props} />}
       </div>
     );
   }

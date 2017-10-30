@@ -11,15 +11,16 @@
   border: 1px solid #FFFFFF;
   border-radius: 4px;
   margin: .5rem;
+  color: #5C75B0;
 }
 
 :local(.pager > li > a) {
   display: block;
   padding: .5rem 1rem;
-  background: #FFF;
-  color: #5C75B0;
+  color: #FFF;
 }
 
 :local(.pager > li).active {
   padding: .5rem 1rem;
+  background: #FFF;
 }
